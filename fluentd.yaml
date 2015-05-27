@@ -2,10 +2,13 @@ apiVersion: v1beta3
 kind: Pod
 metadata:
   name: fluentd-elasticsearch
+  labels:
+    k8s-app: elasticsearch-logging
+    role: logging
 spec:
   containers:
   - name: fluentd-elasticsearch
-    image: gcr.io/google_containers/fluentd-elasticsearch:1.5
+    image: shinymayhem/fluentd-elasticsearch:1.5
     env:
     - name: "FLUENTD_ARGS"
       value: "-qq"
